@@ -6,11 +6,11 @@
 #    By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 13:54:45 by pvong             #+#    #+#              #
-#    Updated: 2023/11/01 12:27:34 by pvong            ###   ########.fr        #
+#    Updated: 2023/11/01 13:35:05 by pvong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Zombie
+NAME = Weapon
 
 # Compilation 
 CXX = g++
@@ -26,8 +26,9 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-		ZombieHorde.cpp \
-		Zombie.cpp
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
@@ -39,8 +40,6 @@ $(OBJ_DIR):
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(INC) $(CXXFLAGS) -c $< -o $@ 
-
-
 
 $(NAME): $(OBJ)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ $^

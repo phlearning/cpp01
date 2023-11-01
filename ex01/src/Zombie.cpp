@@ -6,7 +6,7 @@
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:25:56 by pvong             #+#    #+#             */
-/*   Updated: 2023/10/30 15:37:56 by pvong            ###   ########.fr       */
+/*   Updated: 2023/11/01 14:12:38 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,16 @@
 #include <iostream>
 #include <string>
 
-Zombie::Zombie(std::string name) : _name(name) {}
+Zombie::Zombie(void) {}
 
-void Zombie::announce(void) const {
-    std::cout << "Zombie " << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+void Zombie::setName(std::string name) {
+    this->_name = name;
 }
 
-Zombie* zombieHorde(int N, std::string name) {
-    Zombie* zombieHorde = new Zombie[N];
-    for (int i = 0; i < N; i++) {
-        zombieHorde[i] = Zombie(name);
-    }
-    
-    return zombieHorde;
+void Zombie::announce(void) const {
+    std::cout << "Zombie " << BLUE << this->_name << RESET << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::~Zombie(void) {
-    std::cout << "Zombie " << this->_name << " has been destroyed" << std::endl;
-}
-
-int main(void) {
-    int n = 5;
-    
-    Zombie* zombieGroup = zombieHorde(n, "UglyZombie");
-    for (int i = 0; i < n; i++) {
-        zombieGroup[i].announce();
-    }
-    delete[] zombieGroup;
-
-    return (0);
+    std::cout << "Zombie " << BLUE << this->_name << RESET << " has been destroyed" << std::endl;
 }

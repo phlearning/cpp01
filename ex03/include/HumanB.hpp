@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 13:57:26 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/01 14:17:59 by pvong            ###   ########.fr       */
+/*   Created: 2023/11/01 13:23:35 by pvong             #+#    #+#             */
+/*   Updated: 2023/11/01 16:53:03 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
+#include "Weapon.hpp"
 #include <string>
 
-#define RESET "\e[0m"
-#define BLUE "\e[1;34m"
-
-class Zombie {
+class HumanB {
 
 public:
-    Zombie(std::string name);
-    void announce(void);
-    ~Zombie(void);
+    HumanB(std::string name);
+
+    void attack(void);
+    void setWeapon(Weapon &weapon);
+    
+    ~HumanB(void);
 
 private:
+    Weapon *_Weapon;
     std::string _name;
 };
-
-Zombie *newZombie(std::string name);
-void randomChump(std::string name);
 
 #endif

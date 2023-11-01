@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 13:57:26 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/01 14:17:59 by pvong            ###   ########.fr       */
+/*   Created: 2023/11/01 13:24:28 by pvong             #+#    #+#             */
+/*   Updated: 2023/11/01 14:37:03 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
-
+#include "Weapon.hpp"
 #include <string>
 
-#define RESET "\e[0m"
-#define BLUE "\e[1;34m"
+Weapon::Weapon(std::string type) : _type(type) {}
 
-class Zombie {
+std::string Weapon::getType(void) const {
+    return (this->_type);
+}
 
-public:
-    Zombie(std::string name);
-    void announce(void);
-    ~Zombie(void);
+void Weapon::setType(std::string type) {
+    this->_type = type;
+}
 
-private:
-    std::string _name;
-};
+Weapon::~Weapon(void) {};
 
-Zombie *newZombie(std::string name);
-void randomChump(std::string name);
-
-#endif

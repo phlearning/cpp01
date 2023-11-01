@@ -5,23 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 13:56:32 by pvong             #+#    #+#             */
-/*   Updated: 2023/11/01 12:44:01 by pvong            ###   ########.fr       */
+/*   Created: 2023/11/01 13:21:49 by pvong             #+#    #+#             */
+/*   Updated: 2023/11/01 16:55:12 by pvong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 #include <iostream>
 #include <string>
 
-// * : Use a pointer if needed to be changed or to be managed dynamically, or if it can be pointed to null;
-// & : Use a reference if it is always a non-null object to avoid passing null values, and easier syntax (using '.');
-
-int main(void) {
-    Zombie *zombie1 = newZombie("myNewZombie");
-
-    zombie1->announce();
-    randomChump("myRandomChump");
-    delete zombie1;
-    return (0);
+int main() {
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+    return 0;
 }

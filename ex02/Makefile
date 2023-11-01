@@ -6,19 +6,15 @@
 #    By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 13:54:45 by pvong             #+#    #+#              #
-#    Updated: 2023/11/01 12:27:34 by pvong            ###   ########.fr        #
+#    Updated: 2023/11/01 12:36:47 by pvong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Zombie
+NAME = Brain
 
 # Compilation 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
-# Headers
-
-INC = -I include
 
 # Build
 
@@ -26,8 +22,6 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-		ZombieHorde.cpp \
-		Zombie.cpp
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
@@ -38,12 +32,12 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(INC) $(CXXFLAGS) -c $< -o $@ 
+	$(CXX) $(CXXFLAGS) -c $< -o $@ 
 
 
 
 $(NAME): $(OBJ)
-	$(CXX) $(INC) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 run: $(NAME)
 	./$(NAME)
