@@ -6,11 +6,11 @@
 #    By: pvong <marvin@42lausanne.ch>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 13:54:45 by pvong             #+#    #+#              #
-#    Updated: 2023/11/01 13:35:05 by pvong            ###   ########.fr        #
+#    Updated: 2023/11/02 16:42:54 by pvong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Weapon
+NAME = replace
 
 # Compilation 
 CXX = g++
@@ -26,9 +26,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-		HumanA.cpp \
-		HumanB.cpp \
-		Weapon.cpp
+		File.cpp 
+
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
